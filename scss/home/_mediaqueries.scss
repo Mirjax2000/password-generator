@@ -1,0 +1,20 @@
+@use '../partials/tools' as *;
+@use '../partials/assembler/' as *;
+
+// ----------------------
+/* mediaqueries */
+// ----------------------
+
+// @include mQdefault__max-width(em(700, 16)) {
+    
+    
+// }
+
+// @include mQdefault__min-width(750px) {
+//     :root {
+//         --H1: #{$H1--PC};
+//         --H2: #{$H2--PC};
+//         --par: #{$par--PC};
+//         --container: #{$cont__width--PC};
+//     }
+// }

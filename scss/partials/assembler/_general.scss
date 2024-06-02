@@ -1,0 +1,23 @@
+@use '../tools/' as *;
+
+// ----------------------------
+/*   --- general settings --- */
+// ----------------------------
+
+$debug: false;
+
+// --- HTML settings: box sizing, selection
+html {
+    @include box-sizing(border-box);
+    // @include selection($clr-bg-body);
+    font-size: var(--font-size);
+    scroll-behavior: smooth;
+    font-optical-sizing: auto;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    background-color: $clr-bg-img;
+}

@@ -1,0 +1,12 @@
+// --------------------
+//   --- function ---
+// --------------------
+
+// prepocet na em target/context
+@function em($target, $content) {
+    @return calc(($target / $content) * 1em);
+}
+
+@function rem($pixlsize, $default: 16) {
+    @return calc($pixlsize / $default) * 1rem;
+}

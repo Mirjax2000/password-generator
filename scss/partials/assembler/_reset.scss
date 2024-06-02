@@ -1,0 +1,52 @@
+@use '../tools/' as *;
+
+// ---------------------
+/*  --- reset css --- */
+// ---------------------
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+body,
+form,
+aside,
+input,
+section,
+article {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+input{
+    outline: none;
+    border: none; 
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    background-color: $clr-bg-img;
+}

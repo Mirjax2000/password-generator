@@ -1,0 +1,26 @@
+@use '../partials/tools' as *;
+@use '../partials/assembler/' as *;
+
+// --------------------
+/* --- home main --- */
+// --------------------
+
+.home {
+    font-family: 'Manrope', sans-serif;
+}
+
+@each $element, $styles in $fonts {
+    .#{$element} {
+        color: map-get($styles, color);
+        font-weight: map-get($styles, weight);
+        font-size: map-get($styles, size--PC);
+        line-height: map-get($styles, height--PC);
+        letter-spacing: map-get($styles, spacing--PC);
+    }
+}
+
+@each $element, $color in $bck__color {
+    .#{$element} {
+        background-color: $color;
+    }
+}
