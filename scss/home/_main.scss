@@ -6,21 +6,157 @@
 // --------------------
 
 .home {
-    font-family: 'Manrope', sans-serif;
+    font-family: 'JetBrainsMono', monospace;
+}
+
+.container {
+    @include container(em(1440, 16));
+}
+
+.section {
+    width: em(540, 16);
 }
 
 @each $element, $styles in $fonts {
     .#{$element} {
-        color: map-get($styles, color);
+        // color: map-get($styles, color);
         font-weight: map-get($styles, weight);
         font-size: map-get($styles, size--PC);
-        line-height: map-get($styles, height--PC);
-        letter-spacing: map-get($styles, spacing--PC);
+        // line-height: map-get($styles, height--PC);
+        // letter-spacing: map-get($styles, spacing--PC);
+    }
+}
+
+@each $element, $color in $fonts__color {
+    .#{$element} {
+        color: $color;
     }
 }
 
 @each $element, $color in $bck__color {
     .#{$element} {
         background-color: $color;
+    }
+}
+
+.header {
+    &--H1 {
+        margin-bottom: em(31, 24);
+        text-align: center;
+    }
+}
+
+.result {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: em(19, 16) em(32, 16);
+    margin-bottom: em(24, 16);
+}
+
+.main {
+    padding: em(32, 16);
+
+    .length {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: em(16, 16);
+    }
+
+    .slider {
+        padding-block: em(4, 16);
+
+        #myRange {
+            appearance: none;
+            width: 100%;
+            height: em(8, 16);
+            outline: none;
+        }
+
+        #myRange::-webkit-slider-thumb {
+            position: relative;
+            appearance: none;
+            width: em(25, 16);
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+        }
+    }
+
+    .checkBox {
+        margin-block: em(32, 16);
+
+        & > * {
+            display: flex;
+            justify-content: flex-start;
+            gap: em(24, 16);
+            margin-bottom: em(19, 16);
+
+            input[type='checkbox'] {
+                appearance: none;
+                outline: 0;
+                background-color: $clr11;
+                height: em(20, 16);
+                aspect-ratio: 1/1;
+                color: white;
+                border: 2px solid white;
+            }
+            input[type='checkbox']:checked {
+                background-color: $clr16;
+                border: 2px solid $clr16;
+                color: $clr11;
+            }
+            input[type='checkbox']:after {
+                content: '';
+                position: relative;
+                left: 25%;
+                top: 0%;
+                width: em(8, 16);
+                height: em(12, 16);
+                border: solid $clr11;
+                border-width: 0px 3px 3px 0px;
+                transform: rotate(50deg);
+                display: none;
+            }
+
+            input[type='checkbox']:checked:after {
+                display: block;
+            }
+        }
+    }
+    .strength {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &__indicator {
+            display: flex;
+            justify-content: center;
+            gap: em(16, 16);
+        }
+        .meter {
+            display: flex;
+            gap: em(8, 16);
+
+            .box {
+                width: em(10, 16);
+                height: em(28, 16);
+                border: 1px solid $clr14;
+            }
+        }
+    }
+
+    .generate {
+        margin-top: em(32, 16);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: em(24, 16);
+        padding-block: em(20, 16);
+        svg path {
+            fill: $clr11;
+        }
     }
 }

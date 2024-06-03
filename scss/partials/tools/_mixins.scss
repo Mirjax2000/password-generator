@@ -48,9 +48,11 @@
 
 @mixin container($width) {
     max-width: $width;
-    padding-inline: em($cont__padding__inln, 16);
-    padding-block: em($cont__padding__block, 16);
+    height: 100svh;
     margin-inline: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @mixin radialGradient($background: $backroundGradient) {

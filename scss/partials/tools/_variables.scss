@@ -7,15 +7,16 @@ $debug: false;
 
 // --- color pallete ---
 $clr10: #ffffff;
-$clr11: #48556a;
-$clr12: #6e8098;
+$clr11: #24232c;
+$clr12: #817d92;
 $clr13: #9eafc2;
-$clr14: #ecf2f8;
-$clr15: #5a6069;
-$clr16: #7c8187;
-$clr17: #e4e4e4;
-$clr18: #f5f5f5;
-$clr19: #e46643;
+$clr14: #e6e5ea;
+$clr15: #18171f;
+$clr16: #a4ffaf;
+$clr17: #f64a4a;
+$clr18: #fb7c58;
+$clr19: #f8cd65;
+
 $clr20: #fd823f;
 $clr21: #979797;
 $clr22: #c1c4cb;
@@ -28,67 +29,88 @@ $clr99: #505050;
 
 // backround color
 $bck__color: (
-    'home': $clr14,
-    'main': $clr10,
-    'result': $clr14,
-    'share__icon': $clr14,
-    'share__banner': $clr11,
+    'home': $clr15,
+    'break': $clr15,
+
+    'result': $clr11,
+    'main': $clr11,
+
+    'btn': $clr16,
+    'strong': $clr16,
+    'checkbox': $clr16,
+    'generate': $clr16,
+    'myRange': $clr15,
+
+    'tooweak': $clr17,
+    'weak': $clr18,
+    'medium': $clr19,
 );
 $clr-bg-img: $clr99;
 // -------------------------
 
 // fonts - sizes and colors
+$fonts__color: (
+    'header--H1': $clr12,
+    'result--H3': $clr14,
+    'length--H2': $clr16,
+    'length--H3': $clr14,
+    'checkBox--H3': $clr14,
+    'strength--H3': $clr12,
+    'indicator--H1': $clr14,
+    'generate--H3': $clr11,
+);
+
 $fonts: (
-    'H2': (
-        color: $clr11,
+    'heading--L': (
+        color: $clr14,
         weight: 700,
-        size--PC: rem(20),
-        size--Mb: rem(16),
+        size--PC: rem(32),
+        size--Mb: rem(24),
         height--PC: em(28, 20),
         height--Mb: em(24, 16),
         spacing--PC: em(0.25, 20),
         spacing--Mb: em(0.2, 16),
     ),
-    'H3': (
+    'heading--M': (
         color: $clr12,
-        weight: 500,
-        size--PC: rem(13),
-        size--Mb: rem(13),
-        height--PC: em(20, 13),
-        height--Mb: em(20, 13),
-        spacing--PC: em(0.12, 13),
-        spacing--Mb: em(0.12, 13),
-    ),
-    'H4': (
-        color: $clr11,
         weight: 700,
-        size--PC: rem(13),
-        size--Mb: rem(13),
+        size--PC: rem(24),
+        size--Mb: rem(16),
         height--PC: em(20, 13),
         height--Mb: em(20, 13),
         spacing--PC: em(0.12, 13),
         spacing--Mb: em(0.12, 13),
     ),
-    'H5': (
-        weight: 500,
-        color: $clr13,
-        size--PC: rem(13),
-        size--Mb: rem(13),
+    'body--M': (
+        color: $clr14,
+        weight: 700,
+        size--PC: rem(18),
+        size--Mb: rem(16),
         height--PC: em(20, 13),
         height--Mb: em(20, 13),
         spacing--PC: em(0.12, 13),
         spacing--Mb: em(0.12, 13),
     ),
-    'share': (
-        color: $clr13,
-        weight: 500,
-        size--PC: rem(13),
-        size--Mb: rem(13),
-        height--PC: em(20, 13),
-        height--Mb: em(20, 13),
-        spacing--PC: em(5, 13),
-        spacing--Mb: em(5, 13),
-    ),
+    // 'H5': (
+    //     weight: 500,
+    //     color: $clr13,
+    //     size--PC: rem(13),
+    //     size--Mb: rem(13),
+    //     height--PC: em(20, 13),
+    //     height--Mb: em(20, 13),
+    //     spacing--PC: em(0.12, 13),
+    //     spacing--Mb: em(0.12, 13),
+    // ),
+    // 'share': (
+    //     color: $clr13,
+    //     weight: 500,
+    //     size--PC: rem(13),
+    //     size--Mb: rem(13),
+    //     height--PC: em(20, 13),
+    //     height--Mb: em(20, 13),
+    //     spacing--PC: em(5, 13),
+    //     spacing--Mb: em(5, 13),
+    // ),
     // 'p': (
     //     color: $clr12,
     //     size--PC: rem(13),
@@ -98,7 +120,7 @@ $fonts: (
     //     spacing--PC: 0.12px,
     //     spacing--Mb: 0.12px,
     //     weight: 500,
-    // ),,,,,,,,,,
+    // ),,,,,,,,,,,,,,,,,,,,
 );
 // -------------------------
 
