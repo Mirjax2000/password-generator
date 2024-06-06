@@ -7,6 +7,7 @@
 
 .home {
     font-family: 'JetBrainsMono', monospace;
+    user-select: none;
 }
 
 .container {
@@ -52,6 +53,22 @@
     align-items: center;
     padding: em(19, 16) em(32, 16);
     margin-bottom: em(24, 16);
+    user-select: text;
+    svg {
+        cursor: pointer;
+
+        &:hover {
+            path {
+                fill: $clr14;
+            }
+        }
+        &:active {
+            transform: translateY(2px);
+        }
+    }
+    .opacity {
+        opacity: 0.1;
+    }
 }
 
 .main {
@@ -64,24 +81,82 @@
         margin-bottom: em(16, 16);
     }
 
-    .slider {
+    .slider__container {
         padding-block: em(4, 16);
+        position: relative;
 
-        #myRange {
+        #slider,
+        #progressBar {
+            position: absolute;
             appearance: none;
-            width: 100%;
             height: em(8, 16);
             outline: none;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background-color: $clr15;
+            border: none;
         }
 
-        #myRange::-webkit-slider-thumb {
+        #slider::-webkit-slider-thumb {
             position: relative;
+            z-index: 100;
             appearance: none;
             width: em(25, 16);
-            aspect-ratio: 1/1;
+            height: em(25, 16);
             border-radius: 50%;
             background: white;
             cursor: pointer;
+
+            &:hover {
+                background-color: $clr11;
+                border: 2px solid $clr16;
+            }
+        }
+        #progressBar::-webkit-progress-bar {
+            background-color: $clr15;
+        }
+        #progressBar::-webkit-progress-value {
+            background-color: $clr16;
+        }
+
+        /* Firefox */
+        #slider::-moz-range-thumb {
+            position: relative;
+            z-index: 100;
+            top: 0;
+            left: 0;
+            width: em(25, 16);
+            height: em(25, 16);
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+        }
+        #slider::-moz-range-thumb:hover {
+            background-color: $clr11;
+            border: 2px solid $clr16;
+        }
+        #progressBar::-moz-progress-bar {
+            background-color: $clr16;
+        }
+        /* Microsoft Edge */
+        #slider::-ms-thumb {
+            position: relative;
+            z-index: 100;
+            top: 0;
+            left: 0;
+            width: em(25, 16);
+            height: em(25, 16);
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+        }
+        #slider::-ms-thumb:hover {
+            background-color: $clr11;
+            border: 2px solid $clr16;
+        }
+        #progressBar::-ms-fill {
+            background-color: $clr16;
         }
     }
 
@@ -95,6 +170,7 @@
             margin-bottom: em(19, 16);
 
             input[type='checkbox'] {
+                cursor: pointer;
                 appearance: none;
                 outline: 0;
                 background-color: $clr11;
@@ -126,6 +202,7 @@
             }
         }
     }
+
     .strength {
         display: flex;
         justify-content: space-between;
@@ -136,14 +213,28 @@
             justify-content: center;
             gap: em(16, 16);
         }
+
         .meter {
             display: flex;
             gap: em(8, 16);
 
-            .box {
+            & > * {
                 width: em(10, 16);
                 height: em(28, 16);
                 border: 1px solid $clr14;
+            }
+
+            .strong {
+                border: 1px solid $clr16;
+            }
+            .medium {
+                border: 1px solid $clr19;
+            }
+            .weak {
+                border: 1px solid $clr18;
+            }
+            .tooweak {
+                border: 1px solid $clr17;
             }
         }
     }
@@ -155,8 +246,25 @@
         align-items: center;
         gap: em(24, 16);
         padding-block: em(20, 16);
+        border: 2px solid $clr16;
+        cursor: pointer;
+
         svg path {
             fill: $clr11;
+        }
+
+        &:hover {
+            background-color: $clr11;
+
+            .generate--H3 {
+                color: $clr16;
+            }
+            svg path {
+                fill: $clr16;
+            }
+        }
+        &:active {
+            transform: translateY(2px);
         }
     }
 }

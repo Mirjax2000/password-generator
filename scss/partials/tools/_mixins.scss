@@ -6,7 +6,7 @@
 // ------------------
 
 // vlastnost vyberu
-@mixin selection($clr-bg-selection: black, $clr-selection: white) {
+@mixin selection($clr-bg-selection: rgb(255, 208, 0), $clr-selection: white) {
     ::selection {
         background-color: $clr-bg-selection;
         color: $clr-selection;
