@@ -503,8 +503,7 @@ img {
   /* Firefox */
   /* Microsoft Edge */
 }
-.main .slider__container #slider,
-.main .slider__container #progressBar {
+.main .slider__container #slider, .main .slider__container #progressBar {
   position: absolute;
   -webkit-appearance: none;
      -moz-appearance: none;

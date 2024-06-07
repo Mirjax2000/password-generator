@@ -85,8 +85,7 @@
         padding-block: em(4, 16);
         position: relative;
 
-        #slider,
-        #progressBar {
+        #slider,#progressBar {
             position: absolute;
             appearance: none;
             height: em(8, 16);
@@ -113,6 +112,8 @@
                 border: 2px solid $clr16;
             }
         }
+        
+
         #progressBar::-webkit-progress-bar {
             background-color: $clr15;
         }
