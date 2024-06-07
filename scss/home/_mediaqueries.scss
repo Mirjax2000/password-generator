@@ -5,16 +5,36 @@
 /* mediaqueries */
 // ----------------------
 
-// @include mQdefault__max-width(em(700, 16)) {
-    
-    
-// }
+@include mQdefault__max-width(em(600, 16)) {
+    .container {
+        @include container(em(375, 16));
+        min-width: 360px;
+    }
+    .home{
+        @each $element, $styles in $fonts {
+            .#{$element} {
+                // color: map-get($styles, color);
+                font-weight: map-get($styles, weight);
+                font-size: map-get($styles, size--Mb);
+                // line-height: map-get($styles, height--PC);
+                // letter-spacing: map-get($styles, spacing--PC);
+            }
+        }
+        .section{
+            width: em(360,16);
+        }
+    }
+}
 
 // @include mQdefault__min-width(750px) {
-//     :root {
-//         --H1: #{$H1--PC};
-//         --H2: #{$H2--PC};
-//         --par: #{$par--PC};
-//         --container: #{$cont__width--PC};
-//     }
+//     // :root {
+//     //     --H1: #{$H1--PC};
+//     //     --H2: #{$H2--PC};
+//     //     --par: #{$par--PC};
+//     //     --container: #{$cont__width--PC};
+//     // }
+// .container{
+//     @include container(em(750, 16));
+
+// }
 // }
