@@ -1,4 +1,4 @@
-# Frontend Mentor - Chat app
+# Frontend Mentor - Password generator app
 
 This is a solution to the [Password generator app](https://www.frontendmentor.io/challenges/password-generator-app-Mr8CLycqjh). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
