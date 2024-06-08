@@ -117,8 +117,6 @@ $(function () {
             lowers = $('#lowers').prop('checked'),
             numbers = $('#numbers').prop('checked'),
             symbols = $('#symbols').prop('checked'),
-            // not checked
-            none = !uppers && !lowers && !numbers && !symbols,
             //
             //  1x checkbox
             up = uppers && !lowers && !numbers && !symbols,
@@ -145,316 +143,78 @@ $(function () {
             //  4x checkbox
             up_low_num_sym = uppers && lowers && numbers && symbols;
 
-        // automagic
-        let tooweakBool_I = sliderVal <= 10,
-            weakBool_I = sliderVal > 10 && sliderVal <= 17,
-            mediumBool_I = sliderVal > 17 && sliderVal <= 20,
-            //
-            weakBool_II = sliderVal > 10 && sliderVal <= 14,
-            mediumBool_II = sliderVal > 14 && sliderVal <= 17,
-            strongBool_II = sliderVal > 17 && sliderVal <= 20;
+        function checkStrength(sliderVal) {
+            let strengthLevel;
 
-        if (up && tooweakBool_I) {
-            mainArray = uppersArray;
-            roll();
-            strength(tooweak);
-        } else if (up && weakBool_I) {
-            mainArray = uppersArray;
-            roll();
-            strength(weak);
-        } else if (up && mediumBool_I) {
-            mainArray = uppersArray;
-            roll();
-            strength(medium);
-            //
-            //
-        } else if (low && tooweakBool_I) {
-            mainArray = lowersArray;
-            roll();
-            strength(tooweak);
-        } else if (low && weakBool_I) {
-            mainArray = lowersArray;
-            roll();
-            strength(weak);
-        } else if (low && mediumBool_I) {
-            mainArray = lowersArray;
-            roll();
-            strength(medium);
-            //
-            //
-        } else if (num && tooweakBool_I) {
-            mainArray = numbersArray;
-            roll();
-            strength(tooweak);
-        } else if (num && weakBool_I) {
-            mainArray = numbersArray;
-            roll();
-            strength(weak);
-        } else if (num && mediumBool_I) {
-            mainArray = numbersArray;
-            roll();
-            strength(medium);
+            if (sliderVal <= 10) {
+                strengthLevel = tooweak;
+            } else if (sliderVal > 10 && sliderVal <= 14) {
+                strengthLevel = weak;
+            } else if (sliderVal > 14 && sliderVal <= 17) {
+                strengthLevel = medium;
+            } else if (sliderVal > 17 && sliderVal <= 20) {
+                strengthLevel = strong;
+            }
+            return strengthLevel;
         }
-        //
-        else if (sym && tooweakBool_I) {
-            mainArray = symbolsArray;
+        let rollLogic = function () {
             roll();
-            strength(tooweak);
-        } else if (sym && weakBool_II) {
-            mainArray = symbolsArray;
-            roll();
-            strength(weak);
-        } else if (sym && mediumBool_II) {
-            mainArray = symbolsArray;
-            roll();
-            strength(medium);
-        } else if (sym && strongBool_II) {
-            mainArray = symbolsArray;
-            roll();
-            strength(strong);
-        }
-        //
-        //
-        //
-        else if (up_low && tooweakBool_I) {
+            strength(checkStrength(sliderVal));
+        };
+
+        if (up) {
+            mainArray = uppersArray;
+            rollLogic();
+        } else if (low) {
+            mainArray = lowersArray;
+            rollLogic();
+        } else if (num) {
+            mainArray = numbersArray;
+            rollLogic();
+        } else if (sym) {
+            mainArray = sym;
+            rollLogic();
+        } else if (up_low) {
             mainArray = uppersArray.concat(lowersArray);
-            roll();
-            strength(tooweak);
-            //
-        } else if (up_low && weakBool_I) {
-            mainArray = uppersArray.concat(lowersArray);
-            roll();
-            strength(weak);
-            //
-        } else if (up_low && mediumBool_I) {
-            mainArray = uppersArray.concat(lowersArray);
-            roll();
-            strength(medium);
-            //
-            //
-        } else if (up_num && tooweakBool_I) {
+            rollLogic();
+        } else if (up_num) {
             mainArray = uppersArray.concat(numbersArray);
-            roll();
-            strength(tooweak);
-            //
-        } else if (up_num && weakBool_I) {
-            mainArray = uppersArray.concat(numbersArray);
-            roll();
-            strength(weak);
-            //
-        } else if (up_num && mediumBool_I) {
-            mainArray = uppersArray.concat(numbersArray);
-            roll();
-            strength(medium);
-            //
-            //
-        } else if (up_sym && tooweakBool_I) {
-            mainArray = uppersArray.concat(symbolsArray);
-            roll();
-            strength(tooweak);
-            //
-        } else if (up_sym && weakBool_II) {
-            mainArray = uppersArray.concat(symbolsArray);
-            roll();
-            strength(weak);
-            //
-        } else if (up_sym && mediumBool_II) {
-            mainArray = uppersArray.concat(symbolsArray);
-            roll();
-            strength(medium);
-            //
-        } else if (up_sym && strongBool_II) {
-            mainArray = uppersArray.concat(symbolsArray);
-            roll();
-            strength(strong);
-            //
-            //
-        } else if (low_num && tooweakBool_I) {
+            rollLogic();
+        } else if (up_sym) {
+            rollLogic();
+        } else if (low_num) {
             mainArray = lowersArray.concat(numbersArray);
-            roll();
-            strength(tooweak);
-            //
-        } else if (low_num && weakBool_I) {
-            mainArray = lowersArray.concat(numbersArray);
-            roll();
-            strength(weak);
-            //
-        } else if (low_num && mediumBool_I) {
-            mainArray = lowersArray.concat(numbersArray);
-            roll();
-            strength(medium);
-            //
-            //
-        } else if (low_sym && tooweakBool_I) {
+            rollLogic();
+        } else if (low_sym) {
             mainArray = lowersArray.concat(symbolsArray);
-            roll();
-            strength(tooweak);
-            //
-        } else if (low_sym && weakBool_II) {
-            mainArray = lowersArray.concat(symbolsArray);
-            roll();
-            strength(weak);
-            //
-        } else if (low_sym && mediumBool_II) {
-            mainArray = lowersArray.concat(symbolsArray);
-            roll();
-            strength(medium);
-            //
-        } else if (low_sym && strongBool_II) {
-            mainArray = lowersArray.concat(symbolsArray);
-            roll();
-            strength(strong);
-            //
-            //
-        } else if (num_sym && tooweakBool_I) {
+            rollLogic();
+        } else if (num_sym) {
             mainArray = numbersArray.concat(symbolsArray);
-            roll();
-            strength(tooweak);
-            //
-        } else if (num_sym && weakBool_II) {
-            mainArray = numbersArray.concat(symbolsArray);
-            roll();
-            strength(weak);
-            //
-        } else if (num_sym && mediumBool_II) {
-            mainArray = numbersArray.concat(symbolsArray);
-            roll();
-            strength(medium);
-            //
-        } else if (num_sym && strongBool_II) {
-            mainArray = numbersArray.concat(symbolsArray);
-            roll();
-            strength(strong);
-            //
-            //
-            //
-        } else if (up_low_num && tooweakBool_I) {
+            rollLogic();
+        } else if (up_low_num) {
             mainArray = uppersArray.concat(lowersArray, numbersArray);
-            roll();
-            strength(tooweak);
-            //
-        } else if (up_low_num && weakBool_II) {
-            mainArray = uppersArray.concat(lowersArray, numbersArray);
-            roll();
-            strength(weak);
-            //
-        } else if (up_low_num && mediumBool_II) {
-            mainArray = uppersArray.concat(lowersArray, numbersArray);
-            roll();
-            strength(medium);
-            //
-        } else if (up_low_num && strongBool_II) {
-            mainArray = uppersArray.concat(lowersArray, numbersArray);
-            roll();
-            strength(strong);
-            //
-            //
-        } else if (up_low_sym && tooweakBool_I) {
+            rollLogic();
+        } else if (up_low_sym) {
             mainArray = uppersArray.concat(lowersArray, symbolsArray);
-            roll();
-            strength(tooweak);
-            //
-        } else if (up_low_sym && weakBool_II) {
-            mainArray = uppersArray.concat(lowersArray, symbolsArray);
-            roll();
-            strength(weak);
-            //
-        } else if (up_low_sym && mediumBool_II) {
-            mainArray = uppersArray.concat(lowersArray, symbolsArray);
-            roll();
-            strength(medium);
-            //
-        } else if (up_low_sym && strongBool_II) {
-            mainArray = uppersArray.concat(lowersArray, symbolsArray);
-            roll();
-            strength(strong);
-            //
-            //
-        } else if (up_num_sym && tooweakBool_I) {
+            rollLogic();
+        } else if (up_num_sym) {
             mainArray = uppersArray.concat(numbersArray, symbolsArray);
-            roll();
-            strength(tooweak);
-            //
-        } else if (up_num_sym && weakBool_II) {
-            mainArray = uppersArray.concat(numbersArray, symbolsArray);
-            roll();
-            strength(weak);
-            //
-        } else if (up_num_sym && mediumBool_II) {
-            mainArray = uppersArray.concat(numbersArray, symbolsArray);
-            roll();
-            strength(medium);
-            //
-        } else if (up_num_sym && strongBool_II) {
-            mainArray = uppersArray.concat(numbersArray, symbolsArray);
-            roll();
-            strength(strong);
-            //
-            //
-        } else if (low_num_sym && tooweakBool_I) {
+            rollLogic();
+        } else if (low_num_sym) {
             mainArray = lowersArray.concat(numbersArray, symbolsArray);
-            roll();
-            strength(tooweak);
-            //
-        } else if (low_num_sym && weakBool_II) {
-            mainArray = lowersArray.concat(numbersArray, symbolsArray);
-            roll();
-            strength(weak);
-            //
-        } else if (low_num_sym && mediumBool_II) {
-            mainArray = lowersArray.concat(numbersArray, symbolsArray);
-            roll();
-            strength(medium);
-            //
-        } else if (low_num_sym && strongBool_II) {
-            mainArray = lowersArray.concat(numbersArray, symbolsArray);
-            roll();
-            strength(strong);
-            //
-            //
-            //
-        } else if (up_low_num_sym && tooweakBool_I) {
+            rollLogic();
+        } else if (up_low_num_sym) {
             mainArray = uppersArray.concat(
                 lowersArray,
                 numbersArray,
                 symbolsArray
             );
-            roll();
-            strength(tooweak);
-            //
-        } else if (up_low_num_sym && sliderVal > 10 && sliderVal <= 13) {
-            mainArray = uppersArray.concat(
-                lowersArray,
-                numbersArray,
-                symbolsArray
-            );
-            roll();
-            strength(weak);
-            //
-        } else if (up_low_num_sym && sliderVal > 13 && sliderVal <= 16) {
-            mainArray = uppersArray.concat(
-                lowersArray,
-                numbersArray,
-                symbolsArray
-            );
-            roll();
-            strength(medium);
-            //
-        } else if (up_low_num_sym && sliderVal > 16 && sliderVal <= 20) {
-            mainArray = uppersArray.concat(
-                lowersArray,
-                numbersArray,
-                symbolsArray
-            );
-            roll();
-            strength(strong);
-            //
-            //
-            //
+            rollLogic();
         } else {
             result.removeClass('opacity');
             result.addClass('opacity');
             result.text('P4$5W0rD!');
+            evaluation.text('');
         }
     });
 
