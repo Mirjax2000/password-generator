@@ -110,11 +110,12 @@ $(function () {
     });
 
     progressBar.on('click', function (e) {
-        var x = e.pageX - $(this).offset().left,
-            sliderVal = Math.ceil((x * this.max) / this.offsetWidth);
+        let x = e.pageX - $(this).offset().left;
+        sliderVal = Math.ceil((x * this.max) / this.offsetWidth);
         progressBar.val(sliderVal);
         slider.val(sliderVal);
         count.text(sliderVal);
+        console.log(sliderVal);
     });
 
     let uppers = $('#uppers').prop('checked'),
@@ -173,18 +174,18 @@ $(function () {
             //
             //  4x checkbox
             up_low_num_sym = uppers && lowers && numbers && symbols;
-            console.log(uppers,lowers,numbers,symbols);
-            
-            function checkStrength(sliderVal) {
-                let strengthLevel;
-                
-                if (sliderVal <= 10) {
-                    strengthLevel = tooweak;
-                    } else if (sliderVal > 10 && sliderVal <= 14) {
-                        strengthLevel = weak;
-                        } else if (sliderVal > 14 && sliderVal <= 17) {
-                            strengthLevel = medium;
-                            } else if (sliderVal > 17 && sliderVal <= 20) {
+        console.log(uppers, lowers, numbers, symbols);
+
+        function checkStrength(sliderVal) {
+            let strengthLevel;
+
+            if (sliderVal <= 10) {
+                strengthLevel = tooweak;
+            } else if (sliderVal > 10 && sliderVal <= 14) {
+                strengthLevel = weak;
+            } else if (sliderVal > 14 && sliderVal <= 17) {
+                strengthLevel = medium;
+            } else if (sliderVal > 17 && sliderVal <= 20) {
                 strengthLevel = strong;
             }
             return strengthLevel;
