@@ -85,7 +85,8 @@
         padding-block: em(4, 16);
         position: relative;
 
-        #slider,#progressBar {
+        #slider,
+        #progressBar {
             position: absolute;
             appearance: none;
             height: em(8, 16);
@@ -95,6 +96,7 @@
             left: 0;
             background-color: $clr15;
             border: none;
+            cursor: pointer;
         }
 
         #slider::-webkit-slider-thumb {
@@ -112,7 +114,6 @@
                 border: 2px solid $clr16;
             }
         }
-        
 
         #progressBar::-webkit-progress-bar {
             background-color: $clr15;
@@ -266,6 +267,22 @@
         }
         &:active {
             transform: translateY(2px);
+        }
+    }
+    .default {
+        background-color: $clr99;
+        opacity: 0.5;
+        &:hover {
+            background-color: $clr99;
+            .generate--H3 {
+                color: $clr11;
+            }
+            svg path {
+                fill: $clr11;
+            }
+        }
+        &:active {
+            transform: translateY(0);
         }
     }
 }

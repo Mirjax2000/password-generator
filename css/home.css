@@ -503,7 +503,8 @@ img {
   /* Firefox */
   /* Microsoft Edge */
 }
-.main .slider__container #slider, .main .slider__container #progressBar {
+.main .slider__container #slider,
+.main .slider__container #progressBar {
   position: absolute;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -515,6 +516,7 @@ img {
   left: 0;
   background-color: #18171f;
   border: none;
+  cursor: pointer;
 }
 .main .slider__container #slider::-webkit-slider-thumb {
   position: relative;
@@ -693,6 +695,23 @@ img {
 .main .generate:active {
   -webkit-transform: translateY(2px);
           transform: translateY(2px);
+}
+.main .default {
+  background-color: #505050;
+  opacity: 0.5;
+}
+.main .default:hover {
+  background-color: #505050;
+}
+.main .default:hover .generate--H3 {
+  color: #24232c;
+}
+.main .default:hover svg path {
+  fill: #24232c;
+}
+.main .default:active {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
 }
 
 /* mediaqueries */

@@ -16,6 +16,7 @@ $(function () {
         progressBar = $('#progressBar'),
         count = $('#count'),
         result = $('#result'),
+        checkbox = $('#checkbox'),
         generate = $('#generate'),
         mainArray = [],
         mainResult = '',
@@ -108,6 +109,36 @@ $(function () {
         progressBar.val(sliderVal);
     });
 
+    progressBar.on('click', function (e) {
+        var x = e.pageX - $(this).offset().left,
+            sliderVal = Math.ceil((x * this.max) / this.offsetWidth);
+        progressBar.val(sliderVal);
+        slider.val(sliderVal);
+        count.text(sliderVal);
+    });
+
+    let uppers = $('#uppers').prop('checked'),
+        lowers = $('#lowers').prop('checked'),
+        numbers = $('#numbers').prop('checked'),
+        symbols = $('#symbols').prop('checked');
+    if (!uppers && !lowers && !numbers && !symbols) {
+        generate.addClass('default');
+    } else {
+        generate.removeClass('default');
+    }
+
+    checkbox.on('input', function () {
+        let uppers = $('#uppers').prop('checked'),
+            lowers = $('#lowers').prop('checked'),
+            numbers = $('#numbers').prop('checked'),
+            symbols = $('#symbols').prop('checked');
+        if (!uppers && !lowers && !numbers && !symbols) {
+            generate.addClass('default');
+        } else {
+            generate.removeClass('default');
+        }
+    });
+
     //  generate event
     generate.on('click', function () {
         rmv();
@@ -142,17 +173,18 @@ $(function () {
             //
             //  4x checkbox
             up_low_num_sym = uppers && lowers && numbers && symbols;
-
-        function checkStrength(sliderVal) {
-            let strengthLevel;
-
-            if (sliderVal <= 10) {
-                strengthLevel = tooweak;
-            } else if (sliderVal > 10 && sliderVal <= 14) {
-                strengthLevel = weak;
-            } else if (sliderVal > 14 && sliderVal <= 17) {
-                strengthLevel = medium;
-            } else if (sliderVal > 17 && sliderVal <= 20) {
+            console.log(uppers,lowers,numbers,symbols);
+            
+            function checkStrength(sliderVal) {
+                let strengthLevel;
+                
+                if (sliderVal <= 10) {
+                    strengthLevel = tooweak;
+                    } else if (sliderVal > 10 && sliderVal <= 14) {
+                        strengthLevel = weak;
+                        } else if (sliderVal > 14 && sliderVal <= 17) {
+                            strengthLevel = medium;
+                            } else if (sliderVal > 17 && sliderVal <= 20) {
                 strengthLevel = strong;
             }
             return strengthLevel;
@@ -172,7 +204,7 @@ $(function () {
             mainArray = numbersArray;
             rollLogic();
         } else if (sym) {
-            mainArray = sym;
+            mainArray = symbolsArray;
             rollLogic();
         } else if (up_low) {
             mainArray = uppersArray.concat(lowersArray);
@@ -181,6 +213,7 @@ $(function () {
             mainArray = uppersArray.concat(numbersArray);
             rollLogic();
         } else if (up_sym) {
+            mainArray = uppersArray.concat(symbolsArray);
             rollLogic();
         } else if (low_num) {
             mainArray = lowersArray.concat(numbersArray);
