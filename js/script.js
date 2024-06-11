@@ -118,6 +118,22 @@ $(function () {
         console.log(sliderVal);
     });
 
+    // settings
+    let localSettings = function (vstup) {
+        if (localStorage.getItem(vstup) == 'true') {
+            $('#' + vstup).prop('checked', true);
+        } else if (localStorage.getItem('uppers') == null) {
+            $('#uppers').prop('checked', true);
+        } else {
+            $('#' + vstup).prop('checked', false);
+        }
+    };
+
+    localSettings('uppers');
+    localSettings('lowers');
+    localSettings('numbers');
+    localSettings('symbols');
+
     let uppers = $('#uppers').prop('checked'),
         lowers = $('#lowers').prop('checked'),
         numbers = $('#numbers').prop('checked'),
@@ -128,19 +144,6 @@ $(function () {
     } else {
         generate.removeClass('default');
     }
-    // settings
-    let localSettings = function (vstup) {
-        if (localStorage.getItem(vstup) == 'true') {
-            $('#' + vstup).prop('checked', true);
-        } else {
-            $('#' + vstup).prop('checked', false);
-        }
-    };
-
-    localSettings('uppers');
-    localSettings('lowers');
-    localSettings('numbers');
-    localSettings('symbols');
 
     checkbox.on('input', function () {
         let uppers = $('#uppers').prop('checked'),
