@@ -122,11 +122,25 @@ $(function () {
         lowers = $('#lowers').prop('checked'),
         numbers = $('#numbers').prop('checked'),
         symbols = $('#symbols').prop('checked');
+
     if (!uppers && !lowers && !numbers && !symbols) {
         generate.addClass('default');
     } else {
         generate.removeClass('default');
     }
+    // settings
+    let localSettings = function (vstup) {
+        if (localStorage.getItem(vstup) == 'true') {
+            $('#' + vstup).prop('checked', true);
+        } else {
+            $('#' + vstup).prop('checked', false);
+        }
+    };
+
+    localSettings('uppers');
+    localSettings('lowers');
+    localSettings('numbers');
+    localSettings('symbols');
 
     checkbox.on('input', function () {
         let uppers = $('#uppers').prop('checked'),
@@ -174,7 +188,12 @@ $(function () {
             //
             //  4x checkbox
             up_low_num_sym = uppers && lowers && numbers && symbols;
-        console.log(uppers, lowers, numbers, symbols);
+
+        // saving settings to local storage
+        localStorage.setItem('uppers', uppers);
+        localStorage.setItem('lowers', lowers);
+        localStorage.setItem('numbers', numbers);
+        localStorage.setItem('symbols', symbols);
 
         function checkStrength(sliderVal) {
             let strengthLevel;
