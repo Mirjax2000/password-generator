@@ -166,10 +166,14 @@
         margin-block: em(32, 16);
 
         & > * {
-            display: flex;
-            justify-content: flex-start;
-            gap: em(24, 16);
             margin-bottom: em(19, 16);
+
+            label {
+                display: flex;
+                justify-content: flex-start;
+                gap: em(24, 16);
+                cursor: pointer;
+            }
 
             input[type='checkbox'] {
                 cursor: pointer;
